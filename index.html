@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>今日の運勢占い</title>
+
+    <style>
+        body {
+            font-family: sans-serif;
+            text-align: center;
+            background-color: #f0f5ff;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #345b9c;
+        }
+
+        .box {
+            background-color: white;
+            width: 350px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 10px #cccccc;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px 25px;
+            margin-top: 15px;
+            background-color: #5488d8;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #345b9c;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            color: #e66b8b;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h1>今日の運勢占い</h1>
+
+        <p>名前を入力してください。</p>
+
+        <input type="text" id="name" placeholder="名前を入力">
+
+        <br>
+
+        <button onclick="uranai()">占う！</button>
+
+        <div id="result"></div>
+    </div>
+
+    <script type="text/javascript">
+
+        function uranai() {
+
+            // 入力された名前を取得
+            var name = document.getElementById("name").value;
+
+            // 名前が入力されているか確認
+            if (name == "") {
+                alert("名前を入力してください。");
+                return;
+            }
+
+            // 1から100までのランダムな数値を生成
+            var number = Math.floor(Math.random() * 100) + 1;
+
+            // 数値によって運勢を決定
+            var fortune;
+
+            if (number >= 90) {
+                fortune = "大吉！";
+            } else if (number >= 70) {
+                fortune = "中吉！";
+            } else if (number >= 40) {
+                fortune = "小吉！";
+            } else {
+                fortune = "凶...";
+            }
+
+            // 結果を画面に表示
+            document.getElementById("result").innerHTML =
+                name + "さんの今日の運勢は<br>" +
+                fortune + "<br>" +
+                "ラッキーナンバーは " + number + " です！";
+
+        }
+
+    </script>
+
+</body>
+</html>
